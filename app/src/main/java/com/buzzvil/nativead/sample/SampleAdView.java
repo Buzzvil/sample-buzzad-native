@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.buzzvil.buzzad.sdk.nativead.Ad;
-import com.hovans.android.util.StringUtils;
 
 /**
  * Created by cos on 11/08/2017.
@@ -82,7 +82,7 @@ public class SampleAdView extends FrameLayout {
             ad.getIconImage().loadIntoView(imageIcon);
             textTitle.setText(ad.getTitle());
             textDescription.setText(ad.getContent());
-            if (false == StringUtils.isEmpty(ad.getCallToAction())) {
+            if (false == TextUtils.isEmpty(ad.getCallToAction())) {
                 textCallToAction.setText(ad.getCallToAction());
                 textCallToAction.setVisibility(View.VISIBLE);
             }

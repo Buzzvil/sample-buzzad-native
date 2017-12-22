@@ -7,7 +7,7 @@
         android:id="@+id/vGroupNativeAdFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dark_goldenrod">
+        android:background="#FFb8860b">
         <ImageView
             android:id="@+id/imageFullscreen"
             android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                                 android:ellipsize="end"
                                 android:includeFontPadding="false"
                                 android:maxLines="2"
-                                android:textColor="@color/white"
+                                android:textColor="@android:color/white"
                                 android:textSize="@dimen/native_title_font_size"
                                 android:textStyle="bold"
                                 android:background="@drawable/bound_of_view"/>
