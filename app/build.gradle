@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
 
 repositories {
-    jcenter()
-    maven { url 'http://dl.appnext.com/' }
-    maven { url 'https://s3.amazonaws.com/moat-sdk-builds' }
-    maven { url 'https://dl.bintray.com/buzzvil/maven/' }
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 android {
@@ -12,11 +11,17 @@ android {
     buildToolsVersion buildToolVersionValue
     defaultConfig {
         applicationId "com.buzzvil.nativead.sample"
-        minSdkVersion 21
+        minSdkVersion 16
         targetSdkVersion buildTargetSdkVersionValue
         versionCode 1
         versionName "1.1"
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
     }
     buildTypes {
         release {
@@ -36,8 +41,17 @@ android {
 }
 
 dependencies {
-    compile 'com.buzzvil.buzzad:buzzad-sdk:+'
-    compile 'com.android.support:multidex:1.0.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    fileTree(dir: 'libs', include: '**/*.aar')
+            .each { File file ->
+        dependencies.add("compile", [name: file.name.lastIndexOf('.').with { it != -1 ? file.name[0..<it] : file.name }, ext: 'aar'])
+    }
+
+    compile("com.google.android.gms:play-services-ads:$playServicesVersion")
+    compile("com.android.support:support-v4:$androidSupportVersion")
+    compile("com.android.support:appcompat-v7:$androidSupportVersion")
+    compile("com.android.support:customtabs:$androidSupportVersion")
 }
 
 /*
