@@ -49,6 +49,8 @@ dependencies {
     }
 
     compile("com.google.android.gms:play-services-ads:$playServicesVersion")
+    compile("com.google.android.gms:play-services-basement:$playServicesVersion")
+    compile("com.google.android.gms:play-services-location:$playServicesVersion")
     compile("com.android.support:support-v4:$androidSupportVersion")
     compile("com.android.support:appcompat-v7:$androidSupportVersion")
     compile("com.android.support:customtabs:$androidSupportVersion")
