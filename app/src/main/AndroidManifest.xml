@@ -19,6 +19,6 @@
 
 		<meta-data
 			android:name="app_license"
-			android:value="[YOUR_BAIDU_APPKEY]" />
+			android:value="[BAIDU_APPKEY]" />
 	</application>
 </manifest>

@@ -28,8 +28,8 @@ public class SampleAdView extends FrameLayout {
         void onClose(View view);
     }
 
-    ViewGroup vPartMain, vDescription;
-    ViewGroup vGroupNativeAd, vGroupCallToAction;
+    ViewGroup vGroupNativeAdFrame, vPartMain, vDescription;
+    ViewGroup vGroupNativeAd, vGroupFullscreenAd, vGroupCallToAction;
     TextView textTitle, textDescription;
     TextView textCallToAction;
     ImageView imageCover, imageIcon, imageAdPlaceholder;
@@ -42,9 +42,11 @@ public class SampleAdView extends FrameLayout {
 
         inflate(getContext(), R.layout.view_sample_native_ad, this);
 
+        this.vGroupNativeAdFrame = (ViewGroup) findViewById(R.id.vGroupNativeAdFrame);
         this.vPartMain = ((ViewGroup) findViewById(R.id.vPartMain));
         this.vDescription = ((ViewGroup) findViewById(R.id.vDescription));
         this.vGroupNativeAd = ((ViewGroup) findViewById(R.id.vGroupNativeAd));
+        this.vGroupFullscreenAd = ((ViewGroup) findViewById(R.id.vGroupFullscreenAd));
         this.vGroupCallToAction = ((ViewGroup) findViewById(R.id.vGroupCallToAction));
         this.textTitle = ((TextView) findViewById(R.id.textTitle));
         this.textDescription = ((TextView) findViewById(R.id.textDescription));
@@ -71,11 +73,12 @@ public class SampleAdView extends FrameLayout {
     }
 
     public void setAd(Ad ad) {
-        imageFullscreen.setVisibility(ad.isFullscreen()? VISIBLE : GONE);
+        vGroupFullscreenAd.setVisibility(ad.isFullscreen()? VISIBLE : GONE);
         vGroupNativeAd.setVisibility(!ad.isFullscreen()? VISIBLE : GONE);
 
         if (ad.isFullscreen()) {
             ad.getCoverImage().loadIntoView(imageFullscreen);
+            ad.registerViewForInteraction(vGroupFullscreenAd);
         }
         else {
             ad.getCoverImage().loadIntoView(imageCover);
@@ -83,9 +86,10 @@ public class SampleAdView extends FrameLayout {
             textTitle.setText(ad.getTitle());
             textDescription.setText(ad.getContent());
             if (false == TextUtils.isEmpty(ad.getCallToAction())) {
+                vGroupCallToAction.setVisibility(View.VISIBLE);
                 textCallToAction.setText(ad.getCallToAction());
-                textCallToAction.setVisibility(View.VISIBLE);
             }
+            ad.registerViewForInteraction(vGroupNativeAd);
         }
     }
 

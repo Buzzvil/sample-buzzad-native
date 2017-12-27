@@ -74,7 +74,9 @@ public class SampleActivity extends Activity {
 			if (nativeAd != null) {
 				nativeAd.destroy();
 			}
-			ads.clear();
+			if (ads != null) {
+				ads.clear();
+			}
 			textConsole.setText("");
 		}
 	};

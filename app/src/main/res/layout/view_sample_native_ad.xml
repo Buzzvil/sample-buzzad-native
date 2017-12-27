@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:tools="http://schemas.android.com/tools"
-       tools:ignore="HardcodedText,SpUsage,ContentDescription,RtlHardcoded">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText,SpUsage,ContentDescription,RtlHardcoded">
 
     <FrameLayout
         android:id="@+id/vGroupNativeAdFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFb8860b">
-        <ImageView
-            android:id="@+id/imageFullscreen"
+        <FrameLayout
+            android:id="@+id/vGroupFullscreenAd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
             android:visibility="gone">
-        </ImageView>
+            <ImageView
+                android:id="@+id/imageFullscreen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY">
+            </ImageView>
+        </FrameLayout>
         <LinearLayout
             android:id="@+id/vGroupNativeAd"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/bound_of_view"
             android:orientation="vertical">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@drawable/bound_of_view"
-                android:layout_weight="@integer/locker_header_ratio">
-            </FrameLayout>
-
             <ScrollView
                 android:id="@+id/vPartMain"
                 android:layout_width="match_parent"
@@ -142,7 +139,6 @@
                                 android:lineSpacingMultiplier="1.1"/>
                         </LinearLayout>
                     </LinearLayout>
-
                     <RelativeLayout
                         android:id="@+id/vGroupCallToAction"
                         android:layout_width="match_parent"
@@ -172,18 +168,13 @@
                     </RelativeLayout>
                 </LinearLayout>
             </ScrollView>
-            <FrameLayout
-                android:id="@+id/vPartBottom"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="@integer/locker_footer_ratio">
-            </FrameLayout>
         </LinearLayout>
+
         <Button
             android:id="@+id/buttonClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@android:string/cancel"
-            android:layout_gravity="top|right"/>
+            android:layout_gravity="bottom|right"/>
     </FrameLayout>
 </merge>
