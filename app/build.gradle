@@ -2,18 +2,19 @@ apply plugin: 'com.android.application'
 
 repositories {
     jcenter()
+    maven { url 'https://dl.bintray.com/buzzvil/maven/' }
     maven { url 'http://dl.appnext.com/' }
     maven { url 'https://s3.amazonaws.com/moat-sdk-builds' }
-    maven { url 'https://dl.bintray.com/buzzvil/maven/' }
 }
 
 android {
     compileSdkVersion compileSdkVersionValue
     buildToolsVersion buildToolVersionValue
+
     defaultConfig {
         applicationId "com.buzzvil.nativead.sample"
-        minSdkVersion 21
-        targetSdkVersion buildTargetSdkVersionValue
+        minSdkVersion minSdkVersionValue
+        targetSdkVersion targetSdkVersionValue
         versionCode 1
         versionName "1.1"
         multiDexEnabled true
@@ -32,7 +33,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '26.0.2'
 }
 
 dependencies {
