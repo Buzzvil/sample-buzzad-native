@@ -54,7 +54,7 @@ AdListener adListener = new AdListener() {
 
 If you set the audience's demographic profile, it may have positive impact on the fill rate and ad revenue.
 ```
-NativeAd nativeAd = new NativeAd(SampleActivity.this, "230653482367311");
+NativeAd nativeAd = new NativeAd(SampleActivity.this, "[YOUR_APP_KEY]");
 			nativeAd.setAdListener(adListener);
 			nativeAd.loadAds(count);
 ```
