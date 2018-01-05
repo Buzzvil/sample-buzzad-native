@@ -1,3 +1,7 @@
+### v.1.9.16: Migration Guide
+If you use a BuzzTextView, It should be replaced with TextView.
+
+
 ### Prerequisite: Adding repositories and dependencies to build.gradle
 
 ```
@@ -38,6 +42,10 @@ AdListener adListener = new AdListener() {
 
 		@Override
 		public void onClicked(Ad ad) {
+		}
+		
+		@Override
+		public void onLanding(Ad ad, boolean success) {
 		}
 	};
 ```

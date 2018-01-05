@@ -13,9 +13,10 @@ repositories {
 android {
     compileSdkVersion compileSdkVersionValue
     buildToolsVersion buildToolVersionValue
+
     defaultConfig {
         applicationId "com.buzzvil.nativead.sample"
-        minSdkVersion 16
+        minSdkVersion minSdkVersionValue
         targetSdkVersion buildTargetSdkVersionValue
         versionCode 1
         versionName "1.1"
@@ -40,7 +41,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion '26.0.2'
 }
 
 dependencies {
