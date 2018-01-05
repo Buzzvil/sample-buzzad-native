@@ -21,6 +21,7 @@ import java.util.List;
 public class SampleActivity extends Activity {
 	private View buttonLoadAds, buttonShowAd, buttonClearAds;
 	private EditText editCount;
+	private EditText editAppKey;
 	private TextView textConsole;
 
 	private SampleAdView currentAdView;
@@ -33,6 +34,7 @@ public class SampleActivity extends Activity {
 		setContentView(R.layout.activity_sample);
 
 		editCount = (EditText) findViewById(R.id.editCount);
+		editAppKey = (EditText) findViewById(R.id.editAppKey);
 		buttonLoadAds = findViewById(R.id.buttonLoadAds);
 		buttonShowAd = findViewById(R.id.buttonShowAd);
 		buttonClearAds = findViewById(R.id.buttonClearAds);
@@ -62,7 +64,7 @@ public class SampleActivity extends Activity {
 			if (nativeAd != null) {
 				nativeAd.destroy();
 			}
-			nativeAd = new NativeAd(SampleActivity.this, "[YOUR_APP_KEY]");
+			nativeAd = new NativeAd(SampleActivity.this, "[YOUR_APP_KEY])");
 			nativeAd.setAdListener(adListener);
 			nativeAd.loadAds(count, true);
 		}
@@ -74,7 +76,9 @@ public class SampleActivity extends Activity {
 			if (nativeAd != null) {
 				nativeAd.destroy();
 			}
-			ads.clear();
+			if (ads != null) {
+				ads.clear();
+			}
 			textConsole.setText("");
 		}
 	};
