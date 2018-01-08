@@ -19,6 +19,7 @@ import com.buzzvil.buzzad.sdk.nativead.NativeAd;
 import java.util.List;
 
 public class SampleActivity extends Activity {
+	private View vGroupEditAppKey;
 	private View buttonLoadAds, buttonShowAd, buttonClearAds;
 	private EditText editCount;
 	private EditText editAppKey;
@@ -33,6 +34,7 @@ public class SampleActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sample);
 
+		vGroupEditAppKey = findViewById(R.id.vGroupEditAppKey);
 		editCount = (EditText) findViewById(R.id.editCount);
 		editAppKey = (EditText) findViewById(R.id.editAppKey);
 		buttonLoadAds = findViewById(R.id.buttonLoadAds);
@@ -64,7 +66,7 @@ public class SampleActivity extends Activity {
 			if (nativeAd != null) {
 				nativeAd.destroy();
 			}
-			nativeAd = new NativeAd(SampleActivity.this, "[YOUR_APP_KEY])");
+			nativeAd = new NativeAd(SampleActivity.this, "[YOUR_APP_KEY]");
 			nativeAd.setAdListener(adListener);
 			nativeAd.loadAds(count, true);
 		}
