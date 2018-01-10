@@ -8,6 +8,7 @@ If you use a BuzzTextView, It should be replaced with TextView.
 repositories {
     maven { url "https://dl.bintray.com/buzzvil/maven/" }
     maven { url "http://dl.appnext.com/" }
+    maven { url 'https://s3.amazonaws.com/moat-sdk-builds' }
 }
 ...
 dependencies {
