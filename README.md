@@ -8,6 +8,7 @@ If you use a BuzzTextView, It should be replaced with TextView.
 repositories {
     maven { url "https://dl.bintray.com/buzzvil/maven/" }
     maven { url "http://dl.appnext.com/" }
+    maven { url 'https://s3.amazonaws.com/moat-sdk-builds' }
 }
 ...
 dependencies {
@@ -54,7 +55,7 @@ AdListener adListener = new AdListener() {
 
 If you set the audience's demographic profile, it may have positive impact on the fill rate and ad revenue.
 ```
-NativeAd nativeAd = new NativeAd(SampleActivity.this, "230653482367311");
+NativeAd nativeAd = new NativeAd(SampleActivity.this, "[YOUR_APP_KEY]");
 			nativeAd.setAdListener(adListener);
 			nativeAd.loadAds(count);
 ```
