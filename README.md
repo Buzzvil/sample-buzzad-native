@@ -1,6 +1,7 @@
 ### v.1.9.16: Migration Guide
 If you use a BuzzTextView, It should be replaced with TextView.
 
+### The Android SDK is supported on API 16 and above
 
 ### Prerequisite: Adding repositories and dependencies to build.gradle
 
