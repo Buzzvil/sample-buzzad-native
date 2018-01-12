@@ -1,16 +1,14 @@
 ### Latest version: 1.10.1
 
-### v.1.9.16: Migration Guide
-If you use a BuzzTextView, It should be replaced with TextView.
-
 ### The Android SDK is supported on API 16 and above
 
-### Prerequisite: Adding repositories and dependencies to build.gradle
+### Migration Guide(from v.1.9.16 or below)
+If you use a BuzzTextView, It should be replaced with TextView.
 
+### Prerequisite: Adding repositories and dependencies to build.gradle
 ```
 repositories {
     maven { url "https://dl.bintray.com/buzzvil/maven/" }
-    maven { url "http://dl.appnext.com/" }
     maven { url 'https://s3.amazonaws.com/moat-sdk-builds' }
 }
 ...
