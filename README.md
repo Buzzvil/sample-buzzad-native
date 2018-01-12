@@ -1,3 +1,5 @@
+### Latest version: 1.10.1
+
 ### v.1.9.16: Migration Guide
 If you use a BuzzTextView, It should be replaced with TextView.
 
