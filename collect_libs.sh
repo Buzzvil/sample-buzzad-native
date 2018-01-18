@@ -18,7 +18,7 @@ PACKAGE_NAME=com/buzzvil/mediation
 
 export IFS=";"
 # appnext minSdkVersion 17: SDK_NAMES="sdk-appnext;sdk-outbrain;sdk-baidu;sdk-mopub;buzzad-sdk"
-SDK_NAMES="sdk-outbrain;sdk-baidu;sdk-mopub;buzzad-sdk"
+SDK_NAMES="sdk-outbrain;sdk-baidu;sdk-mopub;sdk-admob;buzzad-sdk"
 for SDK_NAME in $SDK_NAMES; do
     SRC_URL=$BINTRAY_DOWNLOAD_PATH?file_path=$PACKAGE_NAME/$SDK_NAME/$LIB_VERSION/$SDK_NAME-$LIB_VERSION.aar
     echo $SRC_URL
