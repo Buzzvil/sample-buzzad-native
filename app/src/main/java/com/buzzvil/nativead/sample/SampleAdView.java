@@ -78,7 +78,6 @@ public class SampleAdView extends FrameLayout {
 
         if (ad.isFullscreen()) {
             ad.getCoverImage().loadIntoView(imageFullscreen);
-            ad.registerViewForInteraction(vGroupFullscreenAd);
         }
         else {
             ad.getCoverImage().loadIntoView(imageCover);
@@ -89,8 +88,8 @@ public class SampleAdView extends FrameLayout {
                 vGroupCallToAction.setVisibility(View.VISIBLE);
                 textCallToAction.setText(ad.getCallToAction());
             }
-            ad.registerViewForInteraction(vGroupNativeAd);
         }
+        ad.registerViewForInteraction(vGroupNativeAdFrame);
     }
 
     @Override
