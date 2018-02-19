@@ -9,25 +9,24 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.buzzvil.buzzad.sdk.BuzzAdError;
-import com.buzzvil.buzzad.sdk.BuzzSDK;
-import com.buzzvil.buzzad.sdk.UserProfile;
-import com.buzzvil.buzzad.sdk.nativead.Ad;
-import com.buzzvil.buzzad.sdk.nativead.AdListener;
-import com.buzzvil.buzzad.sdk.nativead.NativeAd;
+import com.buzzvil.buzzad.BuzzAdError;
+import com.buzzvil.buzzad.BuzzSDK;
+import com.buzzvil.buzzad.UserProfile;
+import com.buzzvil.buzzad.nativead.Ad;
+import com.buzzvil.buzzad.nativead.AdListener;
+import com.buzzvil.buzzad.nativead.NativeAd;
 
 import java.util.List;
 
 public class SampleActivity extends Activity {
 	private View vGroupEditAppKey;
-	private View buttonLoadAds, buttonShowAd, buttonClearAds;
-	private EditText editCount;
+	private View buttonLoadAd, buttonShowAd, buttonClearAd;
 	private EditText editAppKey;
 	private TextView textConsole;
 
 	private SampleAdView currentAdView;
 	private NativeAd nativeAd;
-	private List<Ad> ads = null;
+	private Ad ad = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +34,15 @@ public class SampleActivity extends Activity {
 		setContentView(R.layout.activity_sample);
 
 		vGroupEditAppKey = findViewById(R.id.vGroupEditAppKey);
-		editCount = (EditText) findViewById(R.id.editCount);
 		editAppKey = (EditText) findViewById(R.id.editAppKey);
-		buttonLoadAds = findViewById(R.id.buttonLoadAds);
+		buttonLoadAd = findViewById(R.id.buttonLoadAd);
 		buttonShowAd = findViewById(R.id.buttonShowAd);
-		buttonClearAds = findViewById(R.id.buttonClearAds);
+		buttonClearAd = findViewById(R.id.buttonClearAd);
 
 		textConsole = (TextView) findViewById(R.id.textConsole);
 
-		buttonLoadAds.setOnClickListener(loadAds);
-		buttonClearAds.setOnClickListener(clearAds);
+		buttonLoadAd.setOnClickListener(loadAd);
+		buttonClearAd.setOnClickListener(clearAd);
 		buttonShowAd.setOnClickListener(showAd);
 
 		BuzzSDK.setUserProfile(new UserProfile.Builder()	// Optional
@@ -53,34 +51,27 @@ public class SampleActivity extends Activity {
 				.build());
 	}
 
-	View.OnClickListener loadAds = new View.OnClickListener() {
+	View.OnClickListener loadAd = new View.OnClickListener() {
 		@Override
 		public void onClick(View v)  {
-			int count = Integer.parseInt(editCount.getText().toString());
-			if (count < 1) {
-				Toast.makeText(SampleActivity.this, "'Count' should be positive value", Toast.LENGTH_SHORT).show();
-				return;
-			}
-			textConsole.setText(String.format("Requesting: %d", count));
+			textConsole.setText(String.format("Requesting"));
 
 			if (nativeAd != null) {
 				nativeAd.destroy();
 			}
 			nativeAd = new NativeAd(SampleActivity.this, "[YOUR_APP_KEY]");
 			nativeAd.setAdListener(adListener);
-			nativeAd.loadAds(count, true);
+			nativeAd.loadAd(true);
 		}
 	};
 
-	private View.OnClickListener clearAds = new View.OnClickListener() {
+	private View.OnClickListener clearAd = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
 			if (nativeAd != null) {
 				nativeAd.destroy();
 			}
-			if (ads != null) {
-				ads.clear();
-			}
+			ad = null;
 			textConsole.setText("");
 		}
 	};
@@ -88,28 +79,25 @@ public class SampleActivity extends Activity {
 	private View.OnClickListener showAd = new View.OnClickListener() {
 		@Override
 		public void onClick(View v) {
-			if (ads == null || ads.size() == 0) {
+			if (ad == null) {
 				return;
 			}
 
 			FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
 					FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 
-			final Ad ad = ads.remove(0);
 			currentAdView = new SampleAdView(SampleActivity.this, null);
 			currentAdView.setAd(ad);
 			currentAdView.setOnCloseListener(new SampleAdView.OnCloseListener() {
 				@Override
 				public void onClose(View view) {
-					if (ads.size() == 0) {
-						nativeAd.destroy();
-					}
+					nativeAd.destroy();
 				}
 			});
 
 			((ViewGroup)getWindow().getDecorView().findViewById(android.R.id.content)).addView(
 					currentAdView, -1, layoutParams);
-			textConsole.setText(String.format("Ad size: %d", ads.size()));
+			textConsole.setText(String.format("Ad size: %d", ad == null? 0 : 1));
 		}
 	};
 
@@ -120,10 +108,10 @@ public class SampleActivity extends Activity {
 		}
 
 		@Override
-		public void onAdLoaded(List<Ad> ads) {
+		public void onAdLoaded(Ad ad) {
 			Toast.makeText(getApplicationContext(), "Ad loaded", Toast.LENGTH_SHORT).show();
-			SampleActivity.this.ads = ads;
-			textConsole.setText(String.format("Ad size: %d", ads.size()));
+			SampleActivity.this.ad = ad;
+			textConsole.setText(String.format("Ad size: 1"));
 		}
 
 		@Override

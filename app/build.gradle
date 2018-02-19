@@ -2,9 +2,10 @@ apply plugin: 'com.android.application'
 
 repositories {
     jcenter()
-    maven { url 'https://dl.bintray.com/buzzvil/maven/' }
-    maven { url 'http://dl.appnext.com/' }
-    maven { url 'https://s3.amazonaws.com/moat-sdk-builds' }
+    maven { url "https://maven.google.com" }
+    maven { url "https://dl.bintray.com/buzzvil/maven/" }
+    maven { url "http://dl.appnext.com/" }
+    maven { url "https://s3.amazonaws.com/moat-sdk-builds" }
 }
 
 android {
@@ -13,19 +14,14 @@ android {
 
     defaultConfig {
         applicationId "com.buzzvil.nativead.sample"
-        minSdkVersion minSdkVersionValue
-        targetSdkVersion targetSdkVersionValue
+        minSdkVersion 16
+        targetSdkVersion 23
         versionCode 1
         versionName "1.1"
         multiDexEnabled true
     }
     buildTypes {
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -36,13 +32,7 @@ android {
 }
 
 dependencies {
+    // ./gradlew build --refresh-dependencies
     compile 'com.buzzvil.buzzad:buzzad-sdk:+'
     compile 'com.android.support:multidex:1.0.1'
 }
-
-/*
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-    resolutionStrategy.cacheDynamicVersionsFor 0, 'minutes'
-}
-*/

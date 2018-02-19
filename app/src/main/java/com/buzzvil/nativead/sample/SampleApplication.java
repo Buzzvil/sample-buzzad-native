@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.buzzvil.buzzad.sdk.BuzzSDK;
+import com.buzzvil.buzzad.BuzzSDK;
 
 
 /**

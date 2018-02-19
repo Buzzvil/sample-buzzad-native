@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.buzzvil.buzzad.sdk.nativead.Ad;
+import com.buzzvil.buzzad.nativead.Ad;
 
 /**
  * Created by cos on 11/08/2017.
@@ -78,7 +78,6 @@ public class SampleAdView extends FrameLayout {
 
         if (ad.isFullscreen()) {
             ad.getCoverImage().loadIntoView(imageFullscreen);
-            ad.registerViewForInteraction(vGroupFullscreenAd);
         }
         else {
             ad.getCoverImage().loadIntoView(imageCover);
@@ -89,8 +88,8 @@ public class SampleAdView extends FrameLayout {
                 vGroupCallToAction.setVisibility(View.VISIBLE);
                 textCallToAction.setText(ad.getCallToAction());
             }
-            ad.registerViewForInteraction(vGroupNativeAd);
         }
+        ad.registerViewForInteraction(vGroupNativeAdFrame);
     }
 
     @Override
