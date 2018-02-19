@@ -20,11 +20,8 @@ subprojects {
 
 ext {
     compileSdkVersionValue = 26
-    buildToolVersionValue = '25.0.2'
-    buildTargetSdkVersionValue = 23
+    buildToolVersionValue = '26.0.2'
 
-    minSdkVersionValue = 16
-
-    playServicesVersion = '10.2.0'
+    playServicesVersion = '11.8.0'
     androidSupportVersion = '25.3.1'
 }

@@ -10,7 +10,7 @@
         <FrameLayout
             android:id="@+id/vGroupNativeAdFrame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:background="#FFb8860b">
             <FrameLayout
                 android:id="@+id/vGroupFullscreenAd"

@@ -3,7 +3,7 @@ package com.buzzvil.nativead.sample;
 import android.app.Application;
 import android.content.Context;
 
-import com.buzzvil.buzzad.sdk.BuzzSDK;
+import com.buzzvil.buzzad.BuzzSDK;
 
 
 /**

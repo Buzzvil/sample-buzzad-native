@@ -16,8 +16,8 @@ android {
 
     defaultConfig {
         applicationId "com.buzzvil.nativead.sample"
-        minSdkVersion minSdkVersionValue
-        targetSdkVersion buildTargetSdkVersionValue
+        minSdkVersion 16
+        targetSdkVersion 23
         versionCode 1
         versionName "1.1"
 
@@ -30,11 +30,6 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-
-        debug {
-            //minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -59,10 +54,3 @@ dependencies {
     compile("com.android.support:recyclerview-v7:$androidSupportVersion")
     compile("com.android.support:customtabs:$androidSupportVersion")
 }
-
-/*
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-    resolutionStrategy.cacheDynamicVersionsFor 0, 'minutes'
-}
-*/

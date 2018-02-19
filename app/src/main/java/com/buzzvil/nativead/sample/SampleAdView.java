@@ -14,7 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.buzzvil.buzzad.sdk.nativead.Ad;
+import com.buzzvil.buzzad.nativead.Ad;
 
 /**
  * Created by cos on 11/08/2017.
