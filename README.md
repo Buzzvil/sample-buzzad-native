@@ -1,3 +1,8 @@
+# DEPRECATED
+
+This repository is moved to [Buzzvil/sample-buzznative-android](https://github.com/Buzzvil/sample-buzznative-android).
+
+
 ### Latest version: 1.10.1
 
 ### The Android SDK is supported on API 16 and above
